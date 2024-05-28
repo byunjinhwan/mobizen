@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라이브 방송스타일 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        #test {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .question {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .question img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .question p {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .result img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .start-button, .reset-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>라이브 방송스타일 테스트</h1>
+    <div id="test">
+        <div class="question" id="question1">
+            <img src="file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/1.webp" alt="시작 이미지">
+            <p>1. 당신이 라이브 방송을 시작할 때 첫 마디는?</p>
+            <label><input type="radio" name="q1" value="1"> 안녕하세요 여러분! 반갑습니다!</label>
+            <label><input type="radio" name="q1" value="2"> 오늘도 멋진 하루 되세요!</label>
+            <label><input type="radio" name="q1" value="3"> 오늘의 주제는 무엇일까요?</label>
+            <label><input type="radio" name="q1" value="4"> 바로 시작해 볼까요?</label>
+            <button onclick="nextQuestion(2)">다음</button>
+        </div>
+        <div class="question" id="question2">
+            <img src="file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/2.webp" alt="콘텐츠 이미지">
+            <p>2. 라이브 방송에서 주로 다루고 싶은 콘텐츠는?</p>
+            <label><input type="radio" name="q2" value="1"> 게임 플레이</label>
+            <label><input type="radio" name="q2" value="2"> 일상 브이로그</label>
+            <label><input type="radio" name="q2" value="3"> 음악/노래</label>
+            <label><input type="radio" name="q2" value="4"> 토크쇼/인터뷰</label>
+            <button onclick="nextQuestion(3)">다음</button>
+        </div>
+        <div class="question" id="question3">
+            <img src="file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/3.webp" alt="질문 반응 이미지">
+            <p>3. 방송 중 시청자가 질문을 하면 어떻게 반응하나요?</p>
+            <label><input type="radio" name="q3" value="1"> 즉시 답변해 준다.</label>
+            <label><input type="radio" name="q3" value="2"> 질문을 메모해 두었다가 따로 답변 시간을 가진다.</label>
+            <label><input type="radio" name="q3" value="3"> 질문을 무시하고 진행한다.</label>
+            <label><input type="radio" name="q3" value="4"> 다른 시청자와 함께 답변한다.</label>
+            <button onclick="nextQuestion(4)">다음</button>
+        </div>
+        <div class="question" id="question4">
+            <img src="file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/4.webp" alt="마무리 이미지">
+            <p>4. 방송 마무리는 어떻게 하나요?</p>
+            <label><input type="radio" name="q4" value="1"> 오늘도 시청해 주셔서 감사합니다!</label>
+            <label><input type="radio" name="q4" value="2"> 다음 방송도 기대해 주세요!</label>
+            <label><input type="radio" name="q4" value="3"> 좋아요와 구독 부탁드려요!</label>
+            <label><input type="radio" name="q4" value="4"> 즐거운 하루 보내세요!</label>
+            <button onclick="nextQuestion(5)">다음</button>
+        </div>
+        <div class="question" id="question5">
+            <img src="file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/5.webp" alt="장비 이미지">
+            <p>5. 방송을 위한 장비 선택은?</p>
+            <label><input type="radio" name="q5" value="1"> 최고급 카메라와 마이크</label>
+            <label><input type="radio" name="q5" value="2"> 기본적인 웹캠과 헤드셋</label>
+            <label><input type="radio" name="q5" value="3"> 스마트폰만으로도 충분</label>
+            <label><input type="radio" name="q5" value="4"> 친구에게 빌린 장비</label>
+            <button onclick="showResult()">결과 보기</button>
+        </div>
+        <div class="question" id="result" style="display: none;">
+            <p class="result"></p>
+            <img id="resultImage" alt="결과 이미지">
+            <button class="start-button" onclick="window.location.href='http://www.mobizen.com'">라이브 방송 시작</button>
+            <button class="reset-button" onclick="resetQuiz()">처음으로 돌아가기</button>
+        </div>
+    </div>
+
+    <script>
+        function nextQuestion(questionNumber) {
+            const currentQuestion = document.querySelector('.question:not([style*="display: none"])');
+            const nextQuestion = document.getElementById('question' + questionNumber);
+
+            if (currentQuestion) {
+                currentQuestion.style.display = 'none';
+            }
+            if (nextQuestion) {
+                nextQuestion.style.display = 'flex';
+            }
+        }
+
+        function showResult() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+            const q4 = document.querySelector('input[name="q4"]:checked');
+            const q5 = document.querySelector('input[name="q5"]:checked');
+
+            if (!q1 || !q2 || !q3 || !q4 || !q5) {
+                alert("모든 질문에 답변해 주세요.");
+                return;
+            }
+
+            const total = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value) + parseInt(q4.value) + parseInt(q5.value);
+            let resultText;
+            let resultImageSrc;
+
+            if (total <= 7) {
+                resultText = "스타일 1: 에너제틱 호스트 - 당신은 활기차고 에너지 넘치는 방송 스타일을 가지고 있습니다. 항상 시청자와의 소통을 중요하게 생각합니다.";
+                resultImageSrc = "file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/6.webp";
+            } else if (total <= 10) {
+                resultText = "스타일 2: 편안한 친구 - 일상 속 소소한 이야기를 나누며 시청자들과 편안하게 소통합니다.";
+                resultImageSrc = "file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/7.webp";
+            } else if (total <= 13) {
+                resultText = "스타일 3: 전문 방송인 - 고품질의 콘텐츠와 프로페셔널한 방송을 추구합니다.";
+                resultImageSrc = "file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/8.webp";
+            } else {
+                resultText = "스타일 4: 다재다능한 크리에이터 - 다양한 콘텐츠와 창의적인 아이디어로 시청자들을 매료시킵니다.";
+                resultImageSrc = "file:///D:/5%EC%9B%94%20%EB%A7%88%EC%A7%80%EB%A7%89%20%EC%87%BC%EC%B8%A0%20%EC%98%81%EC%83%81/9.webp";
+            }
+
+            document.getElementById('question5').style.display = 'none';
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'flex';
+            resultDiv.querySelector('.result').innerText = resultText;
+            document.getElementById('resultImage').src = resultImageSrc;
+        }
+
+        function resetQuiz() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('question1').style.display = 'flex';
+            document.querySelectorAll('input[type="radio"]:checked').forEach(input => input.checked = false);
+        }
+
+        // 시작시 첫 질문을 표시
+        document.getElementById('question1').style.display = 'flex';
+    </script>
+</body>
+</html>
+
